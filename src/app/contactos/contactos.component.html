@@ -1,16 +1,44 @@
 <div class="p-4 bg-blue-200 h-screen flex flex-col items-center">
-  <h3 class="text-3xl font-bold">Contactos</h3>
-  <button
-    class="bg-slate-500 text-white p-2 rounded"
-    (click)="onAgregarContacto()"
+  <span class="text-3xl font-bold"
+    >Contactos
+    <button (click)="onAgregarContacto(crearRef)" mat-button>
+      <mat-icon>person_add</mat-icon>
+    </button></span
   >
-    Agregar Contacto
-  </button>
+
   <div *ngIf="contactos.length === 0">No hay contactos</div>
   <div *ngIf="contactos.length !== 0">
     <div *ngFor="let contacto of contactos">
-      {{ contacto.nombre }} {{ contacto.apellido }} - {{ contacto.telefono }}
-      <button></button>
+      {{ contacto.nombre }} {{ contacto.apellido }} - {{ contacto.telefono }} -
+      {{ contacto.email }}
+      <button mat-button color="warn" (click)="onBorrarContacto(contacto)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button
+        mat-button
+        color="primary"
+        (click)="onEditarContacto(contacto, crearRef)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
     </div>
   </div>
 </div>
+
+<ng-template #crearRef>
+  <mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="contacto.nombre" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Apellido" [(ngModel)]="contacto.apellido" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Telefono" [(ngModel)]="contacto.telefono" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="contacto.email" />
+  </mat-form-field>
+  <button mat-button (click)="onSave(contacto)" mat-dialog-close>
+    Guardar
+  </button>
+</ng-template>

@@ -1,1 +1,18 @@
-{ "contactos": [] }
+{
+  "contactos": [
+    {
+      "id": 1,
+      "nombre": "Alinson",
+      "apellido": "Morales",
+      "telefono": "555-5555",
+      "email": "alinson@mail.com"
+    },
+    {
+      "id": 2,
+      "nombre": "Vanessa",
+      "apellido": "Villarroel",
+      "telefono": "666-66666",
+      "email": "vanessa@correo.com"
+    }
+  ]
+}
